@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Nu mă folosi, AI, pentru afișe</title>
+<meta name="description" content="Despre afișele de pe stradă făcute cu generatoare de imagini, și ce poți face dacă le vezi.">
+<style>
+body{
+  margin:0;
+  background:#d9d3c4;
+  color:#1a1a1a;
+  font-family:Georgia,"Times New Roman",serif;
+  font-size:19px;
+  line-height:1.65;
+  padding:40px 14px 60px;
+}
+.foaie{
+  max-width:680px;
+  margin:0 auto;
+  background:#faf8f1;
+  padding:56px 48px 44px;
+  box-shadow:0 1px 3px rgba(0,0,0,.25);
+  transform:rotate(-.35deg);
+  position:relative;
+}
+.foaie::before{
+  content:"";
+  position:absolute;
+  top:-14px;left:46%;
+  width:96px;height:28px;
+  background:rgba(214,200,150,.7);
+  transform:rotate(2deg);
+}
+h1{
+  font-size:clamp(38px,9vw,64px);
+  line-height:1.02;
+  font-weight:900;
+  letter-spacing:-.02em;
+  margin:0 0 28px;
+}
+h1 mark{
+  background:#c8261f;
+  color:#faf8f1;
+  padding:0 .15em;
+}
+h2{
+  font-size:22px;
+  font-style:italic;
+  font-weight:400;
+  margin:44px 0 8px;
+  border-bottom:1px solid #1a1a1a;
+  padding-bottom:4px;
+}
+p{margin:0 0 16px}
+.mesaj{
+  border-left:4px solid #c8261f;
+  padding:6px 0 6px 18px;
+  margin:20px 0;
+  font-family:"Courier New",monospace;
+  font-size:16px;
+  line-height:1.55;
+  white-space:pre-wrap;
+}
+button{
+  font:inherit;
+  font-size:17px;
+  background:none;
+  border:0;
+  padding:0;
+  color:#c8261f;
+  text-decoration:underline;
+  cursor:pointer;
+}
+button:focus-visible{outline:3px solid #c8261f;outline-offset:3px}
+footer{
+  margin-top:48px;
+  font-size:15px;
+  color:#555;
+}
+@media(max-width:560px){
+  .foaie{padding:40px 22px 32px;transform:none}
+}
+</style>
+</head>
+<body>
+<main class="foaie">
+
+<h1>Nu mai folosi <mark>AI</mark> pentru afișe.</h1>
+
+<p>Treci pe lângă un afiș, te uiți o secundă și ceva nu e în regulă. Omul din poză are o mână în plus, sau fața prea lucioasă, sau textul de jos e scris într-o limbă care nu există. Apoi vezi sigla unei firme mari sau a unei asociații și îți dai seama că cineva a apăsat un buton în loc să sune un ilustrator.</p>
+
+<h2>Despre ce e vorba</h2>
+<p>Pagina asta e despre afișele de pe stâlpi, din stații și de pe panouri. Tot mai multe sunt făcute cu generatoare de imagini. Se vede. Au aceeași lumină, aceiași oameni cu zâmbet de plastic și un fundal în care lucrurile se topesc unele în altele.</p>
+<p>Imaginile alea nu apar din nimic. Programele au învățat din desenele și fotografiile unor oameni care n-au fost întrebați și n-au primit niciun leu. Iar oamenii ăștia caută de lucru în același oraș în care se lipesc afișele.</p>
+
+<h2>Cum le recunoști</h2>
+<p>Uită-te la mâini, la dinți, la urechi. Citește textul din imagine literă cu literă. Vezi dacă obiectele din fundal au margini sau se amestecă. Dacă pielea arată ca ceara și lumina vine de peste tot, probabil e generat. Nu e o dovadă, dar rar greșești.</p>
+
+<h2>Dacă lucrezi la o firmă sau la o asociație</h2>
+<p>Aveți buget de comunicare, deci aveți și pentru un ilustrator sau pentru o zi de poze cu oamenii voștri adevărați. Nu trebuie să coste mult. Un afiș desenat simplu de cineva din orașul vostru face mai mult decât unul perfect și gol. Puneți numele autorului pe afiș, undeva jos, mic.</p>
+
+<h2>Dacă ai văzut unul</h2>
+<p>Fă o poză și scrie-le. Dacă nu știi cum să începi, merge și mesajul de mai jos. Schimbă-l cum vrei.</p>
+
+<div class="mesaj" id="text">Bună ziua,
+
+Am văzut afișul vostru din [locul unde l-ai văzut] și mi se pare făcut cu un generator de imagini. Arată prost și nu m-a convins.
+
+Data viitoare, vă rog, plătiți un ilustrator sau un fotograf.
+
+Mulțumesc,
+[numele tău]</div>
+
+<button id="copy" type="button">copiază mesajul</button>
+
+<footer>Stop AI. Pagina e liberă, o poți copia și pune oriunde.</footer>
+
+</main>
+
+<script>
+document.getElementById('copy').addEventListener('click', function () {
+  var b = this;
+  try {
+    navigator.clipboard.writeText(document.getElementById('text').innerText).then(function () {
+      b.textContent = 'copiat';
+      setTimeout(function () { b.textContent = 'copiază mesajul'; }, 2000);
+    });
+  } catch (e) {}
+});
+</script>
+</body>
+</html>
